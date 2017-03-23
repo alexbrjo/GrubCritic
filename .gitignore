@@ -1,0 +1,10 @@
+.DS_Store
+/nbproject
+/build
+/stat
+/node_modules
+
+*.log
+GrubCriticCore.*
+
+# personal Oauth key - don't commit
