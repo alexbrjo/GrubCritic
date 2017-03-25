@@ -2,7 +2,7 @@
   "name": "GrubCritic",
   "description": "Recommends places to eat using the Yelp Fusion API",
   "version": "0.0.1",
-  "keywords": ["Yelp Fusion API", "Food", "HTML5 Geolocation"],
+  "keywords": ["Yelp-Fusion-API", "Food", "HTML5-Geolocation"],
   "author": {
     "name": "Alex Johnson"
   },

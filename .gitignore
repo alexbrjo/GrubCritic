@@ -8,3 +8,4 @@
 GrubCriticCore.*
 
 # personal Oauth key - don't commit
+keys.js

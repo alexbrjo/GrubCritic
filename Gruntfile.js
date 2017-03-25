@@ -1,5 +1,5 @@
 /**
- * Grunt task Configuration
+ * Grunt task Configuration, dist gets deployable app after everybuild
  */
 module.exports = function (grunt) {
     grunt.initConfig({
@@ -18,9 +18,17 @@ module.exports = function (grunt) {
         copy:{
             build:{
                 cwd:'src',
-                src:['**'],
+                src:[ 'core/*'],
                 dest:'build',
+                flatten: true,
                 expand:true
+            },
+            dist:{
+                cwd:'src',
+                src:[ 'web/*'],
+                dest:'dist',
+                flatten: true,
+                expand: true
             }
         },
         
@@ -65,7 +73,7 @@ module.exports = function (grunt) {
     grunt.registerTask(
         'default', 
         'Runs SLOC, builds and runs Karma tests', 
-        ['clean', 'sloc', 'copy:build', 'concat', 'uglify', 'karma']
+        ['clean', 'sloc', 'copy:build', 'concat', 'uglify', 'copy:dist']
     );
     
     grunt.registerTask(
