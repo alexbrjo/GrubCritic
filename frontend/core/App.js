@@ -11,9 +11,9 @@ function GrubCriticApp () {
         throw "Critical: no Yelp Fusion id or auth";
     }
     
-    this.list = document.getElementById('grub-wrapper');
+    this.list = document.getElementById('spot-wrapper');
+    this.queryList;
     this.query = new QueryBuilder();
-    
     /** --------------- So Google key isn't stored in raw HTML -------------- */
     var gMaps = document.createElement('script');
     gMaps.type = 'text/javascript';
@@ -22,28 +22,43 @@ function GrubCriticApp () {
     document.head.appendChild(gMaps);
     /** ---------------------------------------------------------------------- */
     
-    var jsonReq = new XMLHttpRequest();
-    var self = this;
-    jsonReq.open('GET', 'http://alexjo.co/flask/');
-    jsonReq.onreadystatechange = function() {
-        if (jsonReq.readyState !== 4 || jsonReq.status != 200) return; 
-        var x = JSON.parse(jsonReq.responseText).businesses;
-        for(var i = 0; i < x.length; i++) {
-            self.parse(x[i]);
-        }  
+    this.parseResponse = function (resp) {
+        var center = resp.region.center;
+        map.panTo(new google.maps.LatLng(center.latitude, center.longitude));
+        this.queryList = resp.businesses;
+        for (var i = 0; i < this.queryList.length; i++) {
+            var spot = this.queryList[i];
+            spot.grade = 0.8 * (spot.rating / 4.5) + 0.2 * (1 - (spot.price.length / 5));
+        }
+        
+        this.queryList.sort(function(a, b) {
+            if (a.grade < b.grade) return 1;
+            else if (a.grade > b.grade) return -1;
+            else return 0;
+        });
+        
+        this.list.innerHTML = "";
+        for (var j = 0; j < this.queryList.length; j++) {
+            this.parse(this.queryList[j]);
+        }
     };
-    jsonReq.send();
-    
 };
-
-var yelpResp;
 
 /**
  * Starts App and makes app non-global
  */
 window.onload = function () {
     var app = new GrubCriticApp();
+        
+    navigator.geolocation.getCurrentPosition(function (p) {
+        app.query.setCoords(p.coords.latitude, p.coords.longitude);
+        app.query.send(app);
+        var origin = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+        map.panTo(origin);
+    });
+    
     window.searchSubmit = function () {
-        console.log("submitted");
+        app.query.setLocation(document.getElementById("search-input").value);
+        app.query.send(app);
     };
 };

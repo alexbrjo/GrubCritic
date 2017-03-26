@@ -1,6 +1,6 @@
 GrubCriticApp.prototype.parse = function (spot) {
     var root = document.getElementById("spot-wrapper");
-    var grade = 0.8 * (spot.rating / 4.5) + 0.2 * ( spot.price.length /5)
+    var grade = spot.grade;
     var grade_text;
     if (grade > 0.97) grade_text = "A+";
     else if (grade > 0.93) grade_text = "A";

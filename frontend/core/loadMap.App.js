@@ -2,8 +2,9 @@
  * Using you're Google Maps key loads a map with custom style and control
  * settings. Uses DC as the default.
  */
+var map;
 GrubCriticApp.prototype.loadMap = function() {
-    var map = new google.maps.Map(document.getElementById('grub-map'), {
+    map = new google.maps.Map(document.getElementById('grub-map'), {
         zoom: 11,
         center: {lat: 38.899265, lng: -77.1546508},
         streetViewControl: false,
@@ -39,11 +40,4 @@ GrubCriticApp.prototype.loadMap = function() {
             { featureType: 'water',     elementType: 'labels.text.stroke',  stylers: [{color: '#17263c'}]}
         ]
     });
-    
-    function centerMap(p) {
-        var origin = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
-        map.panTo(origin);
-    }
-    
-    navigator.geolocation.getCurrentPosition(centerMap); // if location is known center once
 };
