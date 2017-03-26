@@ -26,10 +26,6 @@ html, body {
 }
 
 /************* Grubspot ***************/
-#grub-wrapper > div.selected {
-    border: 3px solid #417FBF;
-}
-
 #grub-wrapper > div {
     background-color: #FFA5A5;
 }

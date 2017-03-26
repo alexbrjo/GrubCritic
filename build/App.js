@@ -12,6 +12,7 @@ function GrubCriticApp () {
     }
     
     this.list = document.getElementById('grub-wrapper');
+    this.query = new QueryBuilder();
     
     /** --------------- So Google key isn't stored in raw HTML -------------- */
     var gMaps = document.createElement('script');
@@ -19,8 +20,23 @@ function GrubCriticApp () {
     gMaps.onload = this.loadMap;
     gMaps.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.keys.google_maps_key;
     document.head.appendChild(gMaps);
-    /** --------------------------------------------------------------------- */
+    /** ---------------------------------------------------------------------- */
+    
+    var jsonReq = new XMLHttpRequest();
+    var self = this;
+    jsonReq.open('GET', 'http://alexjo.co/flask/');
+    jsonReq.onreadystatechange = function() {
+        if (jsonReq.readyState !== 4 || jsonReq.status != 200) return; 
+        var x = JSON.parse(jsonReq.responseText).businesses;
+        for(var i = 0; i < x.length; i++) {
+            self.parse(x[i]);
+        }  
+    };
+    jsonReq.send();
+    
 };
+
+var yelpResp;
 
 /**
  * Starts App and makes app non-global

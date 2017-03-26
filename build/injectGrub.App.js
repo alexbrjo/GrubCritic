@@ -5,6 +5,5 @@
 GrubCriticApp.prototype.injectGrub = function (YelpBiz) {
     /** The Grubbiness Constant; Calculated with vigous trials and tests */
     var grubbiness = 1;
-    YelpBiz.distace /= 1000;
-    YelpBiz.getGrubiness = grubbiness * YelpBiz.rating / (YelpBiz.price * YelpBiz.distance);
+    YelpBiz.grubiness = grubbiness * YelpBiz.rating / (YelpBiz.price);
 };

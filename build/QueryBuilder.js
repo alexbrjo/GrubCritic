@@ -3,15 +3,22 @@
  */
 function QueryBuilder () {
     var location = null;
+    var distance = null;
+    var term = null;
+    var token = null;
     
     this.setLocation = function () {};
     this.setDistance = function () {};
     this.setTerm = function() {};
     
-    this.search = function (v) {
+    this.setAccessToken = function (t) {
+        token = t;
+    };
+    
+    this.search = function () {
         var jsonReq = new XMLHttpRequest();
-        jsonReq.open('GET', 'https://api.yelp.com/v3/businesses/search');
-
+        jsonReq.open('GET' + token, 'https://api.yelp.com/v3/businesses/search');
+        jsonReq.setRequestHeader('Bearer', token);
         jsonReq.onreadystatechange = function() {
             if (jsonReq.readyState !== 4 || jsonReq.status !== 200) return; 
             object = JSON.parse(jsonReq.responseText);

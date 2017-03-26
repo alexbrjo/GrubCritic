@@ -4,7 +4,5 @@
  * not push.
  */
 GrubCriticApp.prototype.keys = {
-    "google_maps_key" : "key",
-    "yelp_fusion_app_id" : "id",
-    "yelp_fusion_app_secret" : "secret"
+    "google_maps_key" : "key"
 };

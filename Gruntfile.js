@@ -1,5 +1,5 @@
 /**
- * Grunt task Configuration, dist gets deployable app after everybuild
+ * Grunt task Configuration, dist gets deployable app after every build
  */
 module.exports = function (grunt) {
     grunt.initConfig({
@@ -17,14 +17,14 @@ module.exports = function (grunt) {
         },
         copy:{
             build:{
-                cwd:'src',
+                cwd:'frontend',
                 src:[ 'core/*'],
                 dest:'build',
                 flatten: true,
                 expand:true
             },
             dist:{
-                cwd:'src',
+                cwd:'frontend',
                 src:[ 'web/*'],
                 dest:'dist',
                 flatten: true,
@@ -41,23 +41,7 @@ module.exports = function (grunt) {
         },
         clean:{
             build:{
-                src: ['build', 'dist', 'stat']
-            }
-        },
-        karma: {
-            build: {
-                configFile: 'karma.conf.js'
-            }
-        },
-        sloc: {
-            prebuild : {
-                options: {
-                    reportType: 'json',
-                    reportPath: 'stat/sloc.json'
-                },
-                files: {
-                    'src':  [ '**/*.js' ] // only source code
-                }
+                src: ['build', 'dist']
             }
         }
     });
@@ -65,20 +49,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
-    grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('karma-coverage');
-    grunt.loadNpmTasks('grunt-sloc');
-    
     grunt.registerTask(
         'default', 
-        'Runs SLOC, builds and runs Karma tests', 
-        ['clean', 'sloc', 'copy:build', 'concat', 'uglify', 'copy:dist']
-    );
-    
-    grunt.registerTask(
-        'build', 
-        'Runs SLOC, builds and runs Karma tests', 
-        ['clean', 'copy:build', 'karma']
+        'Builds and copies into distibute.', 
+        ['clean', 'copy:build', 'concat', 'uglify', 'copy:dist']
     );
 };

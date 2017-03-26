@@ -1,11 +1,17 @@
 .DS_Store
 /nbproject
+*.log
+
+# Frontend
 /build
 /stat
+/dist
 /node_modules
-
-*.log
 GrubCriticCore.*
-
-# personal Oauth key - don't commit
 keys.js
+keys.json
+
+# Backend
+
+# Github pages
+/gh-pages
