@@ -33,7 +33,7 @@ the /dist folder of your local project.
 
 Step 3: tell apache2 to use your WSGI
 -------------------------------------
-WSGIDaemonProcess bouncer user=<NOT ROOT> group=<NOT ROOT> threads=5 home=/var/www/flask/
+```WSGIDaemonProcess bouncer user=<NOT ROOT> group=<NOT ROOT> threads=5 home=/var/www/flask/
 WSGIScriptAlias /flask /var/www/flask/grubCritic.wsgi
 
 <directory /var/www/flask>
@@ -42,7 +42,7 @@ WSGIScriptAlias /flask /var/www/flask/grubCritic.wsgi
         WSGIScriptReloading On
         Order deny,allow
         Allow from all
-</directory>
+</directory>```
 
 Step 4: restart Apache
 ----------------------

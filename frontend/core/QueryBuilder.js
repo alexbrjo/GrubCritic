@@ -4,7 +4,7 @@
 function QueryBuilder() {
     var coords = null;
     var location = null;
-    var distance = null;
+    var distance = 40000;
     var use_loc = false;
     
     this.closer = function () {  };
@@ -32,7 +32,7 @@ function QueryBuilder() {
             queryString += "location=" + location + "&";
         }
         
-        if (distance !== null)  queryString += "distance=" + distance + "&";
+        if (distance !== null)  queryString += "radius=" + distance + "&";
         
         if (last === queryString) return;
         else last = queryString;

@@ -1,6 +1,12 @@
 /**
  * Using you're Google Maps key loads a map with custom style and control
  * settings. Uses DC as the default.
+ * 
+ * Responsibilites:
+ *  - Load map using API
+ *  - style map
+ *  Posible security threat: map is global
+ * 
  */
 var map;
 GrubCriticApp.prototype.loadMap = function() {

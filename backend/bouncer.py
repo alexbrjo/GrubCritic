@@ -58,9 +58,9 @@ def getRestaurants():
         params['pricing_filter'] = price
 
 # Get search radius
-    dist = request.args.get('distance')
+    dist = request.args.get('radius')
     if term:
-        params['distance'] = dist
+        params['radius'] = dist
 
 # set GET request to Yelp API
     url = 'https://api.yelp.com/v3/businesses/search'

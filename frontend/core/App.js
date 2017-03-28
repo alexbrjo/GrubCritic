@@ -11,6 +11,7 @@ function GrubCriticApp () {
         throw "Critical: no Yelp Fusion id or auth";
     }
     
+    this.markers = [];
     this.list = document.getElementById('spot-wrapper');
     this.queryList;
     this.query = new QueryBuilder();
@@ -39,7 +40,7 @@ function GrubCriticApp () {
         
         this.list.innerHTML = "";
         for (var j = 0; j < this.queryList.length; j++) {
-            this.parse(this.queryList[j]);
+            this.parse(this.queryList[j], this.markers);
         }
     };
 };

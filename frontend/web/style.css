@@ -23,11 +23,16 @@ html, body {
     float: right;
     overflow-y: scroll;
     color: #DDDDDD;
+    background-color: #3E3E3E;
+    background-image: url('loading.gif'); /* ripped from google images */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
 }
 
 /************* Grubspot ***************/
 #grub-wrapper > div {
-    background-color: #FFA5A5;
+    margin-top: 200px;
 }
 
 .spot-inner > div {
@@ -44,6 +49,18 @@ html, body {
     border: 3px solid #5E5E5E;
     background-color: #5E5E5E;
 }
+
+.spot-inner:nth-child(1) { opacity: 1.0; }
+.spot-inner:nth-child(2) { opacity: 0.9; }
+.spot-inner:nth-child(3) { opacity: 0.8; }
+.spot-inner:nth-child(4) { opacity: 0.7; }
+.spot-inner:nth-child(5) { opacity: 0.6; }
+.spot-inner:nth-child(6) { opacity: 0.5; }
+.spot-inner:nth-child(7) { opacity: 0.4; }
+.spot-inner:nth-child(8) { opacity: 0.3; }
+.spot-inner:nth-child(9) { opacity: 0.2; }
+.spot-inner:nth-child(10) { opacity: 0.1; }
+.spot-inner:nth-child(10) { opacity: 0.0; }
 
 .spot-inner:hover {
     border: 3px solid #417FBF;

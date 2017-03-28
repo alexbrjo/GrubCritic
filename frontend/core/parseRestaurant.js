@@ -1,20 +1,30 @@
-GrubCriticApp.prototype.parse = function (spot) {
+/**
+ * Parses a Yelp business (using text, yikes) and inserts into the restaurant
+ * list. 
+ */
+GrubCriticApp.prototype.parse = function (spot, markers) {
     var root = document.getElementById("spot-wrapper");
     var grade = spot.grade;
     var grade_text;
-    if (grade > 0.97) grade_text = "A+";
-    else if (grade > 0.93) grade_text = "A";
-    else if (grade > 0.90) grade_text = "A-";
-    else if (grade > 0.87) grade_text = "B+";
-    else if (grade > 0.83) grade_text = "B";
-    else if (grade > 0.80) grade_text = "B-";
-    else if (grade > 0.77) grade_text = "C+";
-    else if (grade > 0.73) grade_text = "C";
-    else if (grade > 0.70) grade_text = "C-";
-    else if (grade > 0.67) grade_text = "D+";
-    else if (grade > 0.63) grade_text = "D";
-    else if (grade > 0.60) grade_text = "D-";
+    var loc = spot.coordinates;
+    markers.push(new google.maps.Marker({
+        position: {lat: loc.latitude, lng: loc.longitude},
+        map: map,
+        title: spot.name
+    }));
+    
+    // Determine grade text
+    if (grade > 0.9) grade_text = "A";
+    else if (grade > 0.80) grade_text = "B";
+    else if (grade > 0.70) grade_text = "C";
+    else if (grade > 0.60) grade_text = "D";
     else grade_text = "F";
+    
+    // add + or - if not F
+    if (grade > 0.6) {
+        if (grade % 0.1 > 0.08) grade_text += "+";
+        else if (grade % 0.1 < 0.02) grade_text += "-";
+    }
     
     if(spot.name.length > 15){
         spot.name = spot.name.substring(0, 15);
