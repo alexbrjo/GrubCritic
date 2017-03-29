@@ -22,6 +22,7 @@ html, body {
     height: 100%;
     float: right;
     overflow-y: scroll;
+    
     color: #DDDDDD;
     background-color: #3E3E3E;
     background-image: url('loading.gif'); /* ripped from google images */
@@ -30,45 +31,100 @@ html, body {
     background-size: 30%;
 }
 
+/* The control box */
+#grub-control-wrapper {
+    z-index: 3;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 450px;
+    height: 245px;
+}
+
+#grub-control {
+    display: inline-block;
+    margin: 25px;
+    background-color: #3E3E3E;
+    border-radius: 5px;
+}
+
+#grub-control #control-title {
+    border-radius: 5px 5px 0 0;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    padding-left: 20px;
+    background-color: #417FBF;
+    color: #AAEEEE;
+    font-size: 16pt;
+}
+
+#grub-control #recommedation {
+    height: 120px;
+}
+
+#grub-control #input {
+    height: 40px;
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}
+
+#next, #input{
+    font-size: 16pt;
+}
+
+#input > * {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12pt;
+    text-decoration: none;
+}
+
+#input > *:nth-child(1) {
+    background-color: #FF4819;
+    color: #FFDDDD;
+    border-radius: 0 0 0 5px;
+}
+
+#input > *:nth-child(2) {
+    background-color: #417FBF;
+    color: #AAEEEE;
+    border-radius: 0 0 5px 0;
+}
+
+#input > *:hover, #next:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+
 /************* Grubspot ***************/
-#grub-wrapper > div {
-    margin-top: 200px;
+#spot-wrapper {
+    background-color: #3E3E3E;
 }
 
 .spot-inner > div {
     padding: 10px;
+    color: #EEEEEE;
     height: 70px;
+    opacity: 0.8;
 }
 
 .spot-inner:nth-child(odd) {
-    border: 3px solid #3E3E3E;
-    background-color: #3E3E3E;
-}
-
-.spot-inner:nth-child(even) {
     border: 3px solid #5E5E5E;
     background-color: #5E5E5E;
 }
 
-.spot-inner:nth-child(1) { opacity: 1.0; }
-.spot-inner:nth-child(2) { opacity: 0.9; }
-.spot-inner:nth-child(3) { opacity: 0.8; }
-.spot-inner:nth-child(4) { opacity: 0.7; }
-.spot-inner:nth-child(5) { opacity: 0.6; }
-.spot-inner:nth-child(6) { opacity: 0.5; }
-.spot-inner:nth-child(7) { opacity: 0.4; }
-.spot-inner:nth-child(8) { opacity: 0.3; }
-.spot-inner:nth-child(9) { opacity: 0.2; }
-.spot-inner:nth-child(10) { opacity: 0.1; }
-.spot-inner:nth-child(10) { opacity: 0.0; }
-
-.spot-inner:hover {
-    border: 3px solid #417FBF;
-    cursor: pointer;
+.spot-inner:nth-child(even) {
+    border: 3px solid #3E3E3E;
+    background-color: #3E3E3E;
 }
 
-.spot-inner .selected {
+#spot-wrapper .spot-inner:hover {
     border: 3px solid #417FBF;
+    cursor: pointer;
 }
 
 /************* Inner Grubspot ***************/
@@ -105,7 +161,6 @@ html, body {
     border-radius: 7px;
     display: inline-block;
     vertical-align: middle;
-    color: #EEEEEE;
 }
 
 .spot-inner .grubiness {
@@ -166,9 +221,9 @@ input[type=submit] {
 }
 
 input[type=submit]:hover, input[type=submit]:focus {
-    border: 2px solid #316FAF;
-    background-color: #316FAF;
-    color: #AAEEEE;
+    border: 2px solid #4E6E8E;
+    background-color: #4E6E8E;
+    color: #AEA8AF; 
     outline: none;
 }
 
@@ -210,3 +265,10 @@ input[type=submit]:hover, input[type=submit]:focus {
     margin: auto;
     width: 250px;
 }
+
+/* Soft color classes for grades */
+.grubiness.green { color: #00B200; }
+.grubiness.yelgrn { color: #ADFF2F; }
+.grubiness.orange { color: #ADFF2F; }
+.grubiness.yellow { color: #ffff00; }
+.grubiness.red { color: #FF4819; }

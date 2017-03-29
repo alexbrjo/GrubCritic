@@ -5,19 +5,19 @@
  * Responsibilites:
  *  - Load map using API
  *  - style map
- *  Posible security threat: map is global
- * 
  */
-var map;
 GrubCriticApp.prototype.loadMap = function() {
-    map = new google.maps.Map(document.getElementById('grub-map'), {
-        zoom: 11,
-        center: {lat: 38.899265, lng: -77.1546508},
-        streetViewControl: false,
+    this.map = new google.maps.Map(document.getElementById('grub-map'), {
+        zoom: 13,
+        center: this.origin || {lat: 38.899265, lng: -77.1546508},
         disableDefaultUI: true,
+        streetViewControl: false,
         mapTypeControl: false,
-        scaleControl: true,
-        zoomControl: true,
+        scaleControl: false,
+        zoomControl: false,
+        scrollwheel: false,
+        navigationControl: false,
+        draggable: false,
         zoomControlOptions: {
           style: google.maps.ZoomControlStyle.LARGE
         },
