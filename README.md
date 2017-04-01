@@ -1,5 +1,5 @@
-Grub Critic
-===========
+Grub Critic - Release 1.0
+=========================
 Find the best spot for some grub.
 
 - Yelp business search through Yelp Fusion API
