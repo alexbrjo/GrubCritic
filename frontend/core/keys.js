@@ -4,5 +4,5 @@
  * not push.
  */
 GrubCriticApp.prototype.keys = {
-    "google_maps_key" : "MAP-KEY"
+    "google_maps_key" : "MAPS-KEY"
 };
